@@ -455,6 +455,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4b0fc1f1fe8a742bc39915db5829e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splitHorizontally: 1
+  width: 100
+  height: 50
+  roomCount: 5
 --- !u!4 &1074746374
 Transform:
   m_ObjectHideFlags: 0
