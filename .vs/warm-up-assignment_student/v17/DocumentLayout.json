@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\algorithmsutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|c:\\users\\lahon\\documenten\\cmgt\\y1\\t4\\new year 1 algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\debugdrawingbatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\debugdrawingbatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\hellodebugdrawing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hellodebugdrawing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\debugdrawingbatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\debugdrawingbatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGenerator.cs",
               "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\DungeonGenerator.cs",
               "RelativeToolTip": "Assets\\Scripts\\DungeonGenerator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAYAAAA",
+              "ViewState": "AQIAACMAAAAAAAAAAAAuwDwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-27T16:40:55.254Z",
               "EditorCaption": ""
@@ -49,14 +49,14 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\AlgorithmsUtils.cs",
               "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\AlgorithmsUtils.cs",
               "RelativeToolTip": "Assets\\Scripts\\AlgorithmsUtils.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAQwEAAAAA5AAAA",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAAAFoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-07T12:57:26.204Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "DebugDrawingBatcher.cs",
               "DocumentMoniker": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\DebugDrawingBatcher.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DebugDrawingBatcher.cs",
@@ -64,12 +64,11 @@
               "RelativeToolTip": "Assets\\Scripts\\DebugDrawingBatcher.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T16:37:11.301Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-27T16:37:11.301Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "HelloDebugDrawing.cs",
               "DocumentMoniker": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\HelloDebugDrawing.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HelloDebugDrawing.cs",

@@ -5,77 +5,127 @@ using UnityEngine.UIElements;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    List<RectInt> rooms = new List<RectInt>();
+    [SerializeField] List<RectInt> splittingRooms = new List<RectInt>();
+    [SerializeField] List<RectInt> doneRooms = new List<RectInt>();
     RectInt room;
-    [SerializeField] bool splitHorizontally, isSplitting;
+    [SerializeField] bool isSplitting;
 
-    [SerializeField] int width, height, roomCount;
+    [SerializeField] int dungeonWidth, dungeonHeight, maxRoomCount;
+    [Tooltip("the minimum size of the room surface")][SerializeField] int minimumSize;
 
     private void Start()
     {
-        room = new RectInt(Vector2Int.zero, new Vector2Int(width, height));
-        rooms.Add(room);
+        room = new RectInt(Vector2Int.zero, new Vector2Int(dungeonWidth, dungeonHeight));
+        splittingRooms.Add(room);
+        StartCoroutine(SplitRooms());
     }
 
     private void Update()
     {
         DrawRooms();
-        if (rooms.Count <= roomCount && !isSplitting)
-        {
-            isSplitting = true;
-            StartCoroutine(SplitRoomDelay(2f));
-        }
+
+
     }
 
     private void DrawRooms()
     {
-        for (int i = 0; i < rooms.Count; i++)
+        for (int i = 0; i < splittingRooms.Count; i++)
         {
-            AlgorithmsUtils.DebugRectInt(rooms[i], Color.blue);
+            /*AlgorithmsUtils.DebugRectInt(splittingRooms[i], Color.blue);*/
+            AlgorithmsUtils.DebugRectInt(splittingRooms[i], Color.yellow);
+        }
+        for (int i = 0; i < doneRooms.Count; i++)
+        {
+            /*AlgorithmsUtils.DebugRectInt(splittingRooms[i], Color.blue);*/
+            AlgorithmsUtils.DebugRectInt(doneRooms[i], Color.blue);
         }
     }
 
-    private void SplitRooms()
+    private IEnumerator SplitRooms()
     {
         Debug.Log("SplitRooms is being called!");
 
-        for (int i = rooms.Count - 1; i >= 0; i--)
+        while (splittingRooms.Count > 0)
         {
             Debug.Log("For loop is started!");
 
-            if (rooms[i].height <= height / 2)
+            RectInt toCheckRoom = splittingRooms.Pop(0);
+            if (toCheckRoom.height * toCheckRoom.width <= minimumSize) // volgende fix: minimum size toepassen
             {
-                Debug.Log("checking");
-                splitHorizontally = false;
+                doneRooms.Add(toCheckRoom);
+                continue;
             }
 
-            if (splitHorizontally)
-            {
-                Debug.Log("splitting horizontally");
-                int splitY = rooms[i].height / 2;
-
-                rooms.Add(new RectInt(new Vector2Int(rooms[i].position.x, rooms[i].position.y + splitY), new Vector2Int(width, splitY)));
-
-                rooms[i] = new RectInt(rooms[i].position, new Vector2Int(width, rooms[i].height / 2));
-            }
-            else
-            {
-                Debug.Log("splitting vertically");
-                int splitX = rooms[i].width / 2;
-
-                rooms.Add(new RectInt(new Vector2Int(rooms[i].width - splitX, rooms[i].position.y), new Vector2Int(splitX, rooms[i].height)));
-
-                rooms[i] = new RectInt(rooms[i].position, new Vector2Int(splitX, rooms[i].height));
-            }
+            bool splitHorizontally = toCheckRoom.height >= toCheckRoom.width;
+            Debug.Break();
+            SplitRoom(toCheckRoom, splitHorizontally);
+            yield return null;
         }
     }
 
-    private IEnumerator SplitRoomDelay(float delay)
+    /// <summary>
+    /// splits the current room according to the passed parameter
+    /// </summary>
+    /// <param name="toCheckRoom"></param>
+    /// <param name="splitHorizontally"></param>
+    private void SplitRoom(RectInt toCheckRoom, bool splitHorizontally)
+    {
+        if (splitHorizontally)
+        {
+            Debug.Log("splitting horizontally");
+            int splitYDown = Mathf.FloorToInt(toCheckRoom.height / 2f);
+            int splitYUp = Mathf.CeilToInt(toCheckRoom.height / 2f);
+
+            Debug.Log($"splitY1 = {splitYDown}\n"
+                      + $"splityY2 = {splitYUp}");
+
+            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y + splitYDown), new Vector2Int(toCheckRoom.width, splitYUp)));
+
+            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y), new Vector2Int(toCheckRoom.width, splitYDown + 1)));
+
+        }
+        else
+        {
+            Debug.Log("splitting vertically");
+            int splitXDown = Mathf.FloorToInt(toCheckRoom.width / 2f);
+            int splitXUp = Mathf.CeilToInt(toCheckRoom.width / 2f);
+
+            Debug.Log($"splitX1 = {splitXDown}\n"
+                      + $"splityX2 = {splitXUp}");
+
+            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x + splitXDown, toCheckRoom.position.y), new Vector2Int(splitXUp, toCheckRoom.height)));
+
+            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y), new Vector2Int(splitXDown + 1, toCheckRoom.height)));
+
+        }
+    }
+
+  /*  private void SplitRoomRight(RectInt toCheckRoom, bool SplitHorizontally)
+    {
+        if (SplitHorizontally)
+        {
+            int splitYDown = Mathf.RoundToInt(toCheckRoom.height / 2f);
+            int splitYUp = Mathf.CeilToInt(toCheckRoom.height / 2f);
+
+            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x + )))
+        }
+        else
+        {
+            int splitXDown = Mathf.RoundToInt(toCheckRoom.width / 2f);
+            int splitXUp = Mathf.CeilToInt(toCheckRoom.width / 2f);
+
+
+        }
+    }*/
+
+    /*private IEnumerator SplitRoomDelay(float delay)
     {
         Debug.Log("delay started");
+
         yield return new WaitForSeconds(delay);
+
         SplitRooms();
         isSplitting = false;
         Debug.Log("room is split");
-    }
+    }*/
 }
