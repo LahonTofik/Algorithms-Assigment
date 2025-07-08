@@ -47,7 +47,6 @@ public class DungeonGenerator : MonoBehaviour
         // Continue splitting while there are rooms left to process
         while (splittingRooms.Count > 0)
         {
-            Debug.Log("For loop is started!");
 
             RectInt toCheckRoom = splittingRooms.Pop(0);
             if (toCheckRoom.height <= minimumSize || toCheckRoom.width <= minimumSize) // volgende fix: minimum size toepassen
@@ -57,8 +56,8 @@ public class DungeonGenerator : MonoBehaviour
             }
 
             bool splitHorizontally = toCheckRoom.height >= toCheckRoom.width;
-            /* Debug.Break();*/
             SplitRoom(toCheckRoom, splitHorizontally);
+            Debug.Break();
             yield return null;
         }
     }
@@ -73,36 +72,34 @@ public class DungeonGenerator : MonoBehaviour
         if (splitHorizontally)
         {
             Debug.Log("splitting horizontally");
-            // Integer division can't always split the height exactly in half, so we use floor and ceil to cover all rows.
-            int splitYDown = Mathf.FloorToInt(toCheckRoom.height / 2f);
-            int splitYUp = Mathf.CeilToInt(toCheckRoom.height / 2f);
-
-            Debug.Log($"splitY1 = {splitYDown}\n"
-                      + $"splityY2 = {splitYUp}");
+            
+            int randomSplitY = Random.Range(minimumSize, toCheckRoom.height - minimumSize);
 
             // Create and add the upper room
-            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y + splitYDown), new Vector2Int(toCheckRoom.width, splitYUp)));
-
+            RectInt upperRoom = new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y + randomSplitY), new Vector2Int(toCheckRoom.width, toCheckRoom.height - randomSplitY + 1));
+            splittingRooms.Add(upperRoom);
             // Create and add the lower room
-            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y), new Vector2Int(toCheckRoom.width, splitYDown + 1)));
+            RectInt lowerRoom = new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y), new Vector2Int(toCheckRoom.width, randomSplitY));
+            splittingRooms.Add(lowerRoom);
+
+            Debug.Log($"Splitting room {toCheckRoom} into two rooms being upperRoom: {upperRoom} and lowerRoom: {lowerRoom}");
 
         }
         else
         {
             Debug.Log("splitting vertically");
-            // Integer division can't always split the width exactly in half, so we use floor and ceil to cover all columns.
-            int splitXDown = Mathf.FloorToInt(toCheckRoom.width / 2f);
-            int splitXUp = Mathf.CeilToInt(toCheckRoom.width / 2f);
-
-            Debug.Log($"splitX1 = {splitXDown}\n"
-                      + $"splityX2 = {splitXUp}");
+            
+            int randomSplitX = Random.Range(minimumSize, toCheckRoom.width - minimumSize);
 
             // Create and add the right room
-            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x + splitXDown, toCheckRoom.position.y), new Vector2Int(splitXUp, toCheckRoom.height)));
+            RectInt rightRoom = new RectInt(new Vector2Int(toCheckRoom.position.x + (toCheckRoom.width - randomSplitX), toCheckRoom.position.y), new Vector2Int(randomSplitX, toCheckRoom.height));
+            splittingRooms.Add(rightRoom);
 
             // Create and add the left room
-            splittingRooms.Add(new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y), new Vector2Int(splitXDown + 1, toCheckRoom.height)));
+            RectInt leftRoom = new RectInt(new Vector2Int(toCheckRoom.position.x, toCheckRoom.position.y), new Vector2Int(toCheckRoom.width - randomSplitX + 1, toCheckRoom.height));
+            splittingRooms.Add(leftRoom);
 
+            Debug.Log($"Splitting room {toCheckRoom} into two rooms being leftRoom: {leftRoom} and rightRoom: {rightRoom}");
         }
     }
 }
