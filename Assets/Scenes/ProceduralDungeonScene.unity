@@ -455,11 +455,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4b0fc1f1fe8a742bc39915db5829e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  splittingRooms: []
+  doneRooms: []
   isSplitting: 0
-  dungeonWidth: 20
-  dungeonHeight: 20
-  maxRoomCount: 50
-  minimumSize: 10
+  dungeonWidth: 200
+  dungeonHeight: 200
+  maxRoomCount: 500
+  minimumSize: 20
 --- !u!4 &1074746374
 Transform:
   m_ObjectHideFlags: 0
