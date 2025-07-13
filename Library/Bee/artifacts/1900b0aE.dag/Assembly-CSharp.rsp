@@ -431,6 +431,8 @@
 "Assets/Scripts/AlgorithmsUtils.cs"
 "Assets/Scripts/DebugDrawingBatcher.cs"
 "Assets/Scripts/DungeonGenerator.cs"
+"Assets/Scripts/Graph.cs"
+"Assets/Scripts/GraphTester.cs"
 "Assets/Scripts/HelloDebugDrawing.cs"
 -langversion:9.0
 /deterministic

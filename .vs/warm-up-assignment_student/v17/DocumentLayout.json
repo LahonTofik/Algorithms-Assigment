@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|c:\\users\\lahon\\documenten\\cmgt\\y1\\t4\\new year 1 algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|c:\\users\\lahon\\documenten\\cmgt\\y1\\t4\\new year 1 algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\graphtester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\graphtester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|c:\\users\\lahon\\documenten\\cmgt\\y1\\t4\\new year 1 algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\algorithmsutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\algorithmsutils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\hellodebugdrawing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hellodebugdrawing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\debugdrawingbatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\debugdrawingbatcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\dungeongenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\assets\\scripts\\hellodebugdrawing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{49F5B6DB-D033-1448-8D8C-A2E3BAC1BD2A}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\hellodebugdrawing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +39,54 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "GraphTester.cs",
+              "DocumentMoniker": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\GraphTester.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\GraphTester.cs",
+              "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\GraphTester.cs",
+              "RelativeToolTip": "Assets\\Scripts\\GraphTester.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-11T21:01:09.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Graph.cs",
+              "DocumentMoniker": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\Graph.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Graph.cs",
+              "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\Graph.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Graph.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwCgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-11T12:58:58.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DungeonGenerator.cs",
               "DocumentMoniker": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\DungeonGenerator.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DungeonGenerator.cs",
               "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\DungeonGenerator.cs",
               "RelativeToolTip": "Assets\\Scripts\\DungeonGenerator.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAgwDsAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwEYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-27T16:40:55.254Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AlgorithmsUtils.cs",
               "DocumentMoniker": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\AlgorithmsUtils.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AlgorithmsUtils.cs",
               "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\AlgorithmsUtils.cs",
               "RelativeToolTip": "Assets\\Scripts\\AlgorithmsUtils.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAAAFoAAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-07T12:57:26.204Z"
+              "WhenOpened": "2025-04-07T12:57:26.204Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -61,19 +96,20 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\DebugDrawingBatcher.cs",
               "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\DebugDrawingBatcher.cs",
               "RelativeToolTip": "Assets\\Scripts\\DebugDrawingBatcher.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAgAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T16:37:11.301Z"
+              "WhenOpened": "2025-05-27T16:37:11.301Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "HelloDebugDrawing.cs",
               "DocumentMoniker": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\HelloDebugDrawing.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\HelloDebugDrawing.cs",
               "ToolTip": "C:\\Users\\lahon\\Documenten\\CMGT\\Y1\\T4\\New Year 1 Algorithms\\warm-up-assignment_student\\warm-up-assignment_student\\Assets\\Scripts\\HelloDebugDrawing.cs",
               "RelativeToolTip": "Assets\\Scripts\\HelloDebugDrawing.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAcAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-27T16:37:14.567Z"
             }
