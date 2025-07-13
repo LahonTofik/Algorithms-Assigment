@@ -44,8 +44,6 @@ public class Graph<T>
         if (!adjacencyList.ContainsKey(node))
         {
             Debug.Log("Node does not exist in the graph.");
-            // to make sure exceptions aren't thrown
-            return new List<T>();
         }
         return adjacencyList[node];
     }

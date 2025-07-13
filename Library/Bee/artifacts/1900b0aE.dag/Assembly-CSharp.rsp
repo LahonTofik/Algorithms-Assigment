@@ -434,6 +434,8 @@
 "Assets/Scripts/Graph.cs"
 "Assets/Scripts/GraphTester.cs"
 "Assets/Scripts/HelloDebugDrawing.cs"
+"Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/PlayerMoving.cs"
 -langversion:9.0
 /deterministic
 /optimize+

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Data;
 using NaughtyAttributes;
 using UnityEngine.InputSystem;
+using Unity.AI.Navigation;
 
 public class DungeonGenerator : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private int dungeonWidth, dungeonHeight, maxRoomCount;
     [Tooltip("Helps you itterate over the dungeon slowly.\nYou need to use the itterate further bool in the inspector")][SerializeField] private bool stepByStepDebugging = false;
     [Tooltip("Only use when stepByStepDebugging is true")][SerializeField] private bool itterateFurther = false;
+
+    [Header("Prefab Assignment")]
+    public GameObject wallPrefab;
+    public GameObject floorPrefab;
 
     [Header("Dungeon Information")]
 
@@ -32,8 +37,9 @@ public class DungeonGenerator : MonoBehaviour
     [Tooltip("all the rooms created in intersections for the doors")][SerializeField] private List<RectInt> doors = new List<RectInt>();
 
     private int totalCurrentRooms;
+    private NavMeshSurface navMeshSurface;
 
-    Graph<Vector2Int> graph = new Graph<Vector2Int>();
+    Graph<Vector2> graph = new Graph<Vector2>();
     private void Start()
     {
         splittingRooms.Add(new RectInt(Vector2Int.zero, new Vector2Int(dungeonWidth, dungeonHeight)));
@@ -47,7 +53,6 @@ public class DungeonGenerator : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("works now :P");
             itterateFurther = true;
         }
     }
@@ -104,6 +109,8 @@ public class DungeonGenerator : MonoBehaviour
         isSplitting = false;
         yield return StartCoroutine(GenerateDoors());
         yield return StartCoroutine(GenerateRoomGraph());
+
+        yield return StartCoroutine(SpawnDungeonAssests());
     }
 
     /// <summary>
@@ -148,15 +155,15 @@ public class DungeonGenerator : MonoBehaviour
             {
                 if (roomIndex1 != roomIndex2 && AlgorithmsUtils.Intersects(doneRooms[roomIndex1], doneRooms[roomIndex2]))
                 {
-                    RectInt DoorIntsct = AlgorithmsUtils.Intersect(doneRooms[roomIndex1], doneRooms[roomIndex2]);
+                    RectInt WallIntsct = AlgorithmsUtils.Intersect(doneRooms[roomIndex1], doneRooms[roomIndex2]);
 
-                    if (DoorIntsct.width <= 2 && DoorIntsct.height <= 2)
+                    if (WallIntsct.width <= 2 && WallIntsct.height <= 2)
                         continue;
 
-                    if (DoorIntsct.width > 1 && DoorIntsct.height == 1)
+                    if (WallIntsct.width > 1 && WallIntsct.height == 1)
                     {
-                        int RandomX = Random.Range(DoorIntsct.position.x + 1, DoorIntsct.position.x + DoorIntsct.width - 1);
-                        RectInt doors = new RectInt(new Vector2Int(RandomX, DoorIntsct.position.y + DoorIntsct.height / 2), new Vector2Int(1, 1));
+                        int RandomX = Random.Range(WallIntsct.position.x + 1, WallIntsct.position.x + WallIntsct.width - 1);
+                        RectInt doors = new RectInt(new Vector2Int(RandomX, WallIntsct.position.y + WallIntsct.height / 2), new Vector2Int(1, 1));
                         if (!this.doors.Exists(d => d.position == doors.position)) this.doors.Add(doors);
 
                         if (!stepByStepDebugging)
@@ -167,10 +174,10 @@ public class DungeonGenerator : MonoBehaviour
                             itterateFurther = false;
                         }
                     }
-                    else if (DoorIntsct.width == 1 && DoorIntsct.height > 1)
+                    else if (WallIntsct.width == 1 && WallIntsct.height > 1)
                     {
-                        int RandomY = Random.Range(DoorIntsct.position.y + 1, DoorIntsct.position.y + DoorIntsct.height - 1);
-                        RectInt doors = new RectInt(new Vector2Int(DoorIntsct.position.x + DoorIntsct.width / 2, RandomY), new Vector2Int(1, 1));
+                        int RandomY = Random.Range(WallIntsct.position.y + 1, WallIntsct.position.y + WallIntsct.height - 1);
+                        RectInt doors = new RectInt(new Vector2Int(WallIntsct.position.x + WallIntsct.width / 2, RandomY), new Vector2Int(1, 1));
                         if (!this.doors.Exists(d => d.position == doors.position)) this.doors.Add(doors);
 
                         if (!stepByStepDebugging)
@@ -196,19 +203,21 @@ public class DungeonGenerator : MonoBehaviour
         isGeneratingGraph = true;
         for (int roomIndex = 0; roomIndex < doneRooms.Count; roomIndex++)
         {
-            Vector2Int roomCenter = new Vector2Int(doneRooms[roomIndex].position.x + (doneRooms[roomIndex].width / 2), doneRooms[roomIndex].position.y + (doneRooms[roomIndex].height / 2));
-            graph.AddNode(roomCenter);
-            AlgorithmsUtils.DebugRectInt(new RectInt(roomCenter, new Vector2Int(1, 1)), Color.red, Mathf.Infinity);
+            Vector2Int roomCenterInt = new Vector2Int(doneRooms[roomIndex].position.x + (doneRooms[roomIndex].width / 2), doneRooms[roomIndex].position.y + (doneRooms[roomIndex].height / 2));
+
+            graph.AddNode(roomCenterInt);
+            AlgorithmsUtils.DebugRectInt(new RectInt(roomCenterInt - new Vector2Int(1, 1), new Vector2Int(2, 2)), Color.red, Mathf.Infinity);
             for (int doorIndex = 0; doorIndex < doors.Count; doorIndex++)
             {
-                graph.AddNode(doors[doorIndex].position);
+                Vector2 doorCenter = new Vector2(doors[doorIndex].position.x + (doors[doorIndex].width / 2.0f), doors[doorIndex].position.y + (doors[doorIndex].height / 2.0f));
+                graph.AddNode(doorCenter);
                 AlgorithmsUtils.DebugRectInt(new RectInt(doors[doorIndex].position, new Vector2Int(1, 1)), Color.red, Mathf.Infinity);
 
                 if (AlgorithmsUtils.Intersects(doneRooms[roomIndex], doors[doorIndex]))
                 {
-                    graph.AddEdge(roomCenter, doors[doorIndex].position);
+                    graph.AddEdge(roomCenterInt, doorCenter);
 
-                    Debug.DrawLine(new Vector3Int(roomCenter.x, 0, roomCenter.y), new Vector3Int(doors[doorIndex].x, 0, doors[doorIndex].y), Color.black, Mathf.Infinity);
+                    Debug.DrawLine(new Vector3(roomCenterInt.x, 0, roomCenterInt.y), new Vector3(doorCenter.x, 0, doorCenter.y), Color.black, Mathf.Infinity);
 
                     if (!stepByStepDebugging)
                         yield return null;
@@ -224,7 +233,7 @@ public class DungeonGenerator : MonoBehaviour
     }
 
 
-    void DFS<T>(Graph<T> graph, T node)
+    private IEnumerator DFS<T>(Graph<T> graph, T node)
     {
         var visited = new HashSet<T>();
         var stack = new Stack<T>();
@@ -235,6 +244,17 @@ public class DungeonGenerator : MonoBehaviour
         while (stack.Count > 0)
         {
             var s = stack.Pop();
+
+            // Visualize the node (magenta square)
+            if (s is Vector2Int visitedIntNode)
+            {
+                AlgorithmsUtils.DebugRectInt(new RectInt(visitedIntNode - new Vector2Int(1, 1), new Vector2Int(2, 2)), Color.magenta, Mathf.Infinity);
+            }
+            else if (s is Vector2 visitedFloatNode) // since i am placing a node in the center of the door for better visualisation, i also need a check for a normal vec2
+            {
+                AlgorithmsUtils.DebugRectInt(new RectInt(Vector2Int.FloorToInt(visitedFloatNode) - new Vector2Int(1, 1), new Vector2Int(2, 2)), Color.magenta, Mathf.Infinity);
+            }
+
             print(s);
 
             foreach (var neighbor in graph.GetNeighbors(s))
@@ -246,6 +266,94 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
 
+            if (!stepByStepDebugging)
+                yield return new WaitForSeconds(0.1f);
+            else
+            {
+                yield return new WaitUntil(() => itterateFurther);
+                itterateFurther = false;
+            }
         }
+    }
+
+    [Button("Run DFS")]
+    public void TestDFS()
+    {
+        if (doneRooms.Count > 0)
+        {
+            Vector2Int startNode = new Vector2Int(
+                doneRooms[0].position.x + (doneRooms[0].width / 2),
+                doneRooms[0].position.y + (doneRooms[0].height / 2)
+            );
+            StartCoroutine(DFS(graph, startNode));
+        }
+    }
+
+    private HashSet<Vector2Int> wallDictionary = new HashSet<Vector2Int>();
+    private IEnumerator SpawnDungeonAssests()
+    {
+        GameObject parentGameObject = new GameObject("Parent");
+        GenerateFloor();
+
+        for (int i = 0; i < doors.Count; i++)
+        {
+            wallDictionary.Add(new Vector2Int(doors[i].position.x, doors[i].position.y));
+        }
+        for (int i = 0; i < doneRooms.Count; i++)
+        {
+            for (int widthPosIndex = 0; widthPosIndex < doneRooms[i].width; widthPosIndex++)
+            {
+                Vector2Int widthPosition = new Vector2Int(doneRooms[i].position.x + widthPosIndex, doneRooms[i].position.y);
+                if (wallDictionary.Contains(widthPosition))
+                    continue;
+
+                Instantiate(wallPrefab, new Vector3(widthPosition.x, 0, widthPosition.y), Quaternion.identity, parentGameObject.transform);
+                wallDictionary.Add(widthPosition);
+
+                yield return null;
+            }
+            for (int heightPosIndex = 0; heightPosIndex < doneRooms[i].height; heightPosIndex++)
+            {
+                Vector2Int heightPosition = new Vector2Int(doneRooms[i].position.x, doneRooms[i].position.y + heightPosIndex);
+                if (wallDictionary.Contains(heightPosition))
+                    continue;
+
+                Instantiate(wallPrefab, new Vector3(heightPosition.x, 0, heightPosition.y), Quaternion.identity, parentGameObject.transform);
+                wallDictionary.Add(heightPosition);
+
+                yield return null;
+            }
+        }
+
+        for (int i = 0; i <= dungeonWidth; i++)
+        {
+            Vector2Int dungeonWidthPos = new Vector2Int(i, dungeonHeight);
+            if (wallDictionary.Contains(dungeonWidthPos))
+                continue;
+            Instantiate(wallPrefab, new Vector3(dungeonWidthPos.x, 0, dungeonHeight), Quaternion.identity, parentGameObject.transform);
+            wallDictionary.Add(dungeonWidthPos);
+
+            yield return null;
+        }
+        for (int i = 0; i < dungeonHeight; i++)
+        {
+            Vector2Int dungeonHeightPos = new Vector2Int(dungeonWidth, i);
+            if (wallDictionary.Contains(dungeonHeightPos))
+                continue;
+            Instantiate(wallPrefab, new Vector3(dungeonWidth, 0, dungeonHeightPos.y), Quaternion.identity, parentGameObject.transform);
+            wallDictionary.Add(dungeonHeightPos);
+
+            yield return null;
+        }
+        navMeshSurface.BuildNavMesh();
+        yield return null;
+    }
+
+    private void GenerateFloor()
+    {
+        Debug.Log("yippee to bomba");
+        var newObject = Instantiate(floorPrefab, new Vector3(dungeonWidth / 2, 0, dungeonHeight / 2), Quaternion.identity);
+        newObject.transform.localScale = new Vector3(dungeonWidth / 10, 0, dungeonHeight / 10);
+        navMeshSurface = newObject.transform.GetChild(0).GetComponent<NavMeshSurface>();
     }
 }
